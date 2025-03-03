@@ -20,8 +20,32 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Description</th>
+                                <th>Short Name</th>
+                                <th>Category</th>
+                                <th>Base Price one</th>
+                                <th>Size</th>
+                                <th>Vehicle Type</th>
+                                <th>Instructions</th>
+                                <th>Service Type</th>
+                                <th>Pwc EVC Code</th>
+                                <th>Prd Component</th>
+                                <th>Pence Flag</th>
+                                <th>Full Weight</th>
+                                <th>Empty Weight</th>
+                                <th>H2O</th>
+                                <th>CL</th>
+                                <th>S</th>
+                                <th>Solid</th>
+                                <th>FP</th>
+                                <th>Ash</th>
+                                <th>Vehicle & Man Hire</th>
+                                <th>Per Tonne Disposal</th>
+                                <th>Service Check</th>
                                 <th>Status</th>
+                                <th>Prd Default Consignment Note Type</th>
+                                <th>Prd Hazard Codes</th>
+                                <th>Consignment Category</th>
+                                <th>Prd Physical Form</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -46,8 +70,32 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
-                    {data: 'description', name: 'description'},
+                    {data: 'short_name', name: 'short_name'},
+                    {data: 'category', name: 'category'},
+                    {data: 'base_price_one', name: 'base_price_one'},
+                    {data: 'size', name: 'size'},
+                    {data: 'vehicle_type', name: 'vehicle_type'},
+                    {data: 'instructions', name: 'instructions'},
+                    {data: 'service_type', name: 'service_type'},
+                    {data: 'prd_ewc_code', name: 'prd_ewc_code'},
+                    {data: 'prd_component', name: 'prd_component'},
+                    {data: 'pence_flag', name: 'pence_flag'},
+                    {data: 'full_weight', name: 'full_weight'},
+                    {data: 'empty_weight', name: 'empty_weight'},
+                    {data: 'h2o', name: 'h2o'},
+                    {data: 'cl', name: 'cl'},
+                    {data: 's', name: 's'},
+                    {data: 'solid', name: 'solid'},
+                    {data: 'fp', name: 'fp'},
+                    {data: 'ash', name: 'ash'},
+                    {data: 'vehicle_and_man_hire', name: 'vehicle_and_man_hire'},
+                    {data: 'per_tonne_disposal', name: 'per_tonne_disposal'},
+                    {data: 'service_check', name: 'service_check'},
                     {data: 'status_label', name: 'status_label', orderable: false, searchable: false },
+                    {data: 'prd_default_consignment_note_type', name: 'prd_default_consignment_note_type'},
+                    {data: 'prd_hazard_codes_id', name: 'prd_hazard_codes_id'},
+                    {data: 'consignment_category_id', name: 'consignment_category_id'},
+                    {data: 'prd_physical_form_id', name: 'prd_physical_form_id'},
                     {data: 'actions', name: 'actions', orderable: false, searchable: false },
                 ]
             });

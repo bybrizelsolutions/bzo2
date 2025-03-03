@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('vehicle_type');
+            $table->unsignedBigInteger('vehicle_type_id');
+            $table->foreign('vehicle_type_id')->references('id')->on('vehicle_types')->onDelete('cascade');
             $table->string('registration');
             $table->string('make');
             $table->string('model');
             $table->dateTime('purchase_date');
-            $table->dateTime('purchase_from');
-            $table->dateTime('service_by');
-            $table->dateTime('notes');
-            $table->dateTime('mileage')->nullable();
+            $table->string('purchase_from');
+            $table->string('service_by');
+            $table->string('notes');
+            $table->string('mileage')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('checklist_name');
             $table->unsignedBigInteger('vehicle_type_id')->default(1);
-            $table->foreign('vehicle_type_id')->references('id')->on('vehicle_type')->onDelete('cascade');
+            $table->foreign('vehicle_type_id')->references('id')->on('vehicle_types')->onDelete('cascade');
             $table->string('notes');
             $table->enum('status',['0','1','2','3'])->default('0')->comment('0: active, 1: deactivated, 2: suspended, 3: deleted');
             $table->softDeletes();

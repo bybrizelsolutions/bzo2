@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = products::query()->addSelect(['id', 'name', 'description', 'status']);
+            $data = Products::query()->addSelect(['id', 'name', 'short_name', 'category', 'base_price_one', 'size', 'vehicle_type', 'instructions', 'service_type', 'prd_ewc_code', 'prd_component', 'pence_flag', 'full_weight', 'empty_weight', 'h2o', 'cl', 's', 'solid', 'fp', 'ash', 'vehicle_and_man_hire', 'per_tonne_disposal', 'service_check', 'prd_default_consignment_note_type', 'prd_hazard_codes_id', 'consignment_category_id', 'prd_physical_form_id', 'status']);
 
             return DataTables::eloquent($data)
                 ->addIndexColumn()
@@ -21,7 +21,8 @@ class ProductController extends Controller
                     $statusLabels = [
                         '0' => '<span class="badge bg-success">Active</span>',
                         '1' => '<span class="badge bg-warning">Deactivated</span>',
-                        '2' => '<span class="badge bg-danger">Deleted</span>',
+                        '2' => '<span class="badge bg-secondary">Suspended</span>',
+                        '3' => '<span class="badge bg-danger">Deleted</span>',
                     ];
                     return $statusLabels[$row->status] ?? '<span class="badge bg-dark">Unknown</span>';
                 })

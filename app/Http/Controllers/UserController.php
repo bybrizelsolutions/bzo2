@@ -19,7 +19,9 @@ class UserController extends Controller
         if ($request->ajax()) {
             $data = User::with('role')
             ->whereNull('deleted_at')
-            ->select(['id', 'name', 'username', 'email', 'role_id', 'mobile', 'status']);
+            ->select(['id', 'name', 'username', 'email', 'role_id', 'mobile', 'status'])
+            ->where('status', '=', '0')
+            ->orderBy('id', 'desc');
 
             return DataTables::eloquent($data)
                 ->addIndexColumn()
@@ -80,7 +82,7 @@ class UserController extends Controller
             'mobile' => 'nullable|numeric',
             'phone' => 'nullable|numeric',
             'signature' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'status' => 'required',
+            'status' => 'required|in:0,1,2,3',
         ]);
 
         $user = new User();
@@ -127,7 +129,7 @@ class UserController extends Controller
             'mobile' => 'nullable|numeric',
             'phone' => 'nullable|numeric',
             'signature' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'status' => 'required',
+            'status' => 'required|in:0,1,2,3',
         ]);
 
         $user->name = $request->name;
