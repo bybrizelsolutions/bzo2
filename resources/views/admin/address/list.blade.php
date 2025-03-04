@@ -1,17 +1,17 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Area Listing')
+@section('title', 'Address Listing')
 
 @section('content')
     <div class="container-fluid">
 
-        <h1 class="h3 mb-2 text-gray-800">Area List</h1>
+        <h1 class="h3 mb-2 text-gray-800">Address List</h1>
 
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold text-primary">Area List</h6>
-                <a href="{{ route('areas.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-plus fa-sm text-white-50"></i> Add New Area</a>
+                <h6 class="m-0 font-weight-bold text-primary">Address List</h6>
+                <a href="{{ route('addresses.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-plus fa-sm text-white-50"></i> Add New Address</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -19,7 +19,9 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Area</th>
+                                <th>Country</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -35,28 +37,29 @@
 
 @push('scripts')
     <script>
-
         $(document).ready(function () {
             $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('areas.index') }}",  // Same route for both Blade & AJAX
+                ajax: "{{ route('addresses.index') }}",  // Same route for both Blade & AJAX
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'name', name: 'name'},
+                    {data: 'full_address', name: 'full_address'},
+                    {data: 'area.name', name: 'area.name'},
+                    {data: 'country.name', name: 'country.name'},
                     {data: 'actions', name: 'actions', orderable: false, searchable: false },
                 ]
             });
         });
 
         // Handle delete action
-        $(document).on('click', '.delete-area', function(e) {
+        $(document).on('click', '.delete-address', function(e) {
             e.preventDefault();
-            let areaId = $(this).data('id');
+            let addressId = $(this).data('id');
 
-            if (confirm('Are you sure you want to delete this area?')) {
+            if (confirm('Are you sure you want to delete this address?')) {
                 $.ajax({
-                    url: "/areas/" + areaId,
+                    url: "/addresses/" + addressId,
                     type: 'DELETE',
                     data: { _token: '{{ csrf_token() }}' },
                     success: function(response) {
@@ -64,12 +67,11 @@
                         window.location.reload();
                     },
                     error: function(xhr) {
-                        alert('Error deleting area');
+                        alert('Error deleting address');
                     }
                 });
             }
         });
-
     </script>
 
 @endpush

@@ -16,13 +16,13 @@
             <span>Users</span>
         </a>
     </li>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('products.index') }}" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-box"></i>
             <span>Products</span>
         </a>
-    </li>
+    </li> --}}
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('vehicles.index') }}" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
@@ -47,8 +47,29 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('areas.index') }}" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-exclamation-triangle"></i>
+            <i class="fas fa-city"></i>
             <span>Areas</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('countries.index') }}" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-flag"></i>
+            <span>Country</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('addresses.index') }}" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-home"></i>
+            <span>Address</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('locations.index') }}" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Location</span>
         </a>
     </li>
 

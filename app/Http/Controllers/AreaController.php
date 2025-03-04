@@ -22,7 +22,7 @@ class AreaController extends Controller
                 ->addIndexColumn()
                 ->addColumn('actions', function ($row) {
                     return '<a href="' . route('areas.edit', $row->id) . '" class="btn btn-sm btn-primary">Edit</a>
-                        <a href="' . route('areas.destroy', $row->id) . '" class="btn btn-sm btn-danger delete-area" data-id="' . $row->id . '">Delete</a>';
+                            <button class="btn btn-sm btn-danger delete-area" data-id="' . $row->id . '">Delete</button>';
                 })
                 ->rawColumns(['actions'])
                 ->make(true);
@@ -45,7 +45,7 @@ class AreaController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|unique:areas,name',
         ]);
 
         $area = new area();
@@ -58,24 +58,34 @@ class AreaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(area $area)
     {
-        return view('admin.area.edit', compact('country'));
+        return view('admin.area.edit', compact('area'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, area $area)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required|string|unique:areas,name,'.$area->id
+        ]);
+
+        $area->name = $request->name;
+        $area->save();
+
+        return redirect()->route('areas.index')->with('success', 'Area updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(area $area)
     {
-        //
+        // dd($area);
+        $area->delete();
+        return response()->json(['success' => 'Area deleted successfully!']);
     }
 }

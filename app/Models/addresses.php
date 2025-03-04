@@ -13,4 +13,14 @@ class addresses extends Model
         'country',
         'postcode'
     ];
+
+    public function area()
+    {
+        return $this->belongsTo(area::class, 'area_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(countries::class, 'country_id');
+    }
 }
